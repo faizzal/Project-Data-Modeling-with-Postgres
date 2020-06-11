@@ -5,8 +5,18 @@ import pandas as pd
 import datetime
 from sql_queries import *
 
-
+  
 def process_song_file(cur, filepath):
+    
+    """ process_song_file
+
+        Arguments:
+           cur: is sql parameter for execute sql 
+            filepath : contain path for jason file for read  
+             
+       the method purpose is for read files of json and fill database table with data that read it by use insert method in query.py
+        """
+    
     # open song file
     df = pd.read_json(filepath, lines = True)
 
@@ -22,6 +32,15 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    
+     """ process_log_file
+
+        Arguments:
+           cur: is sql parameter for execute sql 
+            filepath : contain path for jason file for read  
+             
+       the method purpose is for read files of json and fill database table with data that read it by use insert method in query.py
+        """
     # open log file
     df = pd.read_json(filepath, lines = True)
 
@@ -66,6 +85,17 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    
+    
+      """ process_data
+
+        Arguments:
+           cur: is sql parameter for execute sql 
+           conn: is one of sql variabl uses for keep connect to database
+           filepath : contain path for jason file for read  
+            func: the type of function that you wnant to run it 
+       the method purpose is for read all files of json and fill database table with data that read it by use insert method in query.py
+        """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
